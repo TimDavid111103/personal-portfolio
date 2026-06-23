@@ -1,0 +1,48 @@
+{
+  "heading": "Featured Projects",
+  "subtitle": "A showcase of my recent work",
+  "projects": [
+    {
+      "id": "evaluation-harness",
+      "title": "Evaluation Harness",
+      "description": "An internal tool that pulls Langfuse eval runs into Notion or Excel for human grading, streamlining the ML evaluation workflow for teams.",
+      "highlights": [
+        "MCP server integration with Langfuse API",
+        "Automated export to Notion databases and Excel",
+        "Configurable grading templates"
+      ],
+      "tags": ["TypeScript", "MCP", "Langfuse", "Next.js"],
+      "image": "/images/projects/evaluation-harness.svg",
+      "liveUrl": "https://example.com",
+      "githubUrl": "https://github.com"
+    },
+    {
+      "id": "portfolio",
+      "title": "Personal Portfolio",
+      "description": "A single-page portfolio built with Next.js and Shadcn UI, featuring JSON-driven content and a warm serif design system.",
+      "highlights": [
+        "JSON-based content management",
+        "Responsive carousel project showcase",
+        "Custom OKLCH design tokens"
+      ],
+      "tags": ["Next.js", "React", "Tailwind CSS", "Shadcn"],
+      "image": "/images/projects/portfolio.svg",
+      "liveUrl": "https://example.com",
+      "githubUrl": "https://github.com"
+    },
+    {
+      "id": "api-dashboard",
+      "title": "API Analytics Dashboard",
+      "description": "A real-time dashboard for monitoring API usage, latency, and error rates with interactive charts and alerting.",
+      "highlights": [
+        "Real-time WebSocket data streaming",
+        "Custom chart components with Recharts",
+        "Role-based access control"
+      ],
+      "tags": ["React", "Node.js", "PostgreSQL", "Redis"],
+      "image": "/images/projects/api-dashboard.svg",
+      "liveUrl": "https://example.com",
+      "githubUrl": "https://github.com"
+    }
+  ]
+}

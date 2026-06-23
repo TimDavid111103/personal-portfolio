@@ -1,0 +1,66 @@
+{
+  "name": "Tim David",
+  "role": "Full-Stack Developer",
+  "bio": "I build thoughtful web applications with modern tools — from polished interfaces to reliable backends. Passionate about clean architecture, developer experience, and shipping products that people actually use.",
+  "avatar": "/images/avatar.png",
+  "nav": {
+    "links": [
+      { "label": "Projects", "href": "#projects" },
+      { "label": "Skills", "href": "#skills" },
+      { "label": "Socials", "href": "#socials" },
+      { "label": "Contact", "href": "#contact" }
+    ],
+    "cta": { "label": "Get In Touch", "href": "#contact" }
+  },
+  "socials": {
+    "heading": "Let's Connect",
+    "description": "Find me on these platforms — always open to collaboration and conversation.",
+    "links": [
+      {
+        "platform": "LinkedIn",
+        "handle": "tim-david",
+        "url": "https://linkedin.com",
+        "icon": "linkedin"
+      },
+      {
+        "platform": "GitHub",
+        "handle": "@timdavid",
+        "url": "https://github.com",
+        "icon": "github"
+      },
+      {
+        "platform": "Twitter",
+        "handle": "@timdavid",
+        "url": "https://twitter.com",
+        "icon": "twitter"
+      },
+      {
+        "platform": "Email",
+        "handle": "hello@example.com",
+        "url": "mailto:hello@example.com",
+        "icon": "mail"
+      },
+      {
+        "platform": "Dev.to",
+        "handle": "@timdavid",
+        "url": "https://dev.to",
+        "icon": "devto"
+      },
+      {
+        "platform": "Medium",
+        "handle": "@timdavid",
+        "url": "https://medium.com",
+        "icon": "medium"
+      }
+    ]
+  },
+  "contact": {
+    "heading": "Ready to Build Something Amazing?",
+    "description": "Have a project in mind or just want to say hello? I'd love to hear from you.",
+    "buttonLabel": "Get In Touch",
+    "email": "hello@example.com"
+  },
+  "footer": {
+    "copyright": "© 2026 Tim David. All rights reserved."
+  }
+}
