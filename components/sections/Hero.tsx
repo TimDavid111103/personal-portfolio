@@ -1,3 +1,8 @@
+/**
+ * @file components/sections/Hero.tsx
+ * Home section: avatar, name, role, bio, and skill tags from site.json.
+ * Includes the pipeline doodle behind the avatar on large screens.
+ */
 import Image from "next/image";
 import { HeroPipelineDoodle } from "@/components/effects/HeroPipelineDoodle";
 import { Section } from "@/components/layout/Section";
@@ -6,6 +11,7 @@ import { cn } from "@/lib/utils";
 
 const site = getSite();
 
+/** Background/border styles cycled across skill tags for visual variety. */
 const skillTagStyles = [
   "bg-primary/10 border-primary/25",
   "bg-primary/12 border-primary/28",
@@ -17,6 +23,7 @@ const skillTagStyles = [
   "bg-primary/13 border-primary/30",
 ] as const;
 
+/** Slight rotations applied to skill tags for a hand-placed look. */
 const skillTagRotations = [
   "-rotate-2",
   "rotate-1",
@@ -28,6 +35,7 @@ const skillTagRotations = [
   "-rotate-2",
 ] as const;
 
+/** Vertical offsets paired with rotations on skill tags. */
 const skillTagOffsets = [
   "translate-y-0.5",
   "-translate-y-1",
@@ -39,12 +47,14 @@ const skillTagOffsets = [
   "translate-y-0.5",
 ] as const;
 
+/** Skills split into three rows of up to three tags each. */
 const skillRows = [
   site.skills.slice(0, 3),
   site.skills.slice(3, 6),
   site.skills.slice(6),
 ] as const;
 
+/** Renders the intro section with profile info and skill tags. */
 export function Hero() {
   return (
     <Section id="home" className="py-4 sm:py-6">

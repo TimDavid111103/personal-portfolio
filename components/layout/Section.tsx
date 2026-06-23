@@ -1,3 +1,8 @@
+/**
+ * @file components/layout/Section.tsx
+ * Full-viewport section wrapper used by Hero and placeholder sections.
+ * Each section fills one screen height and centers its content.
+ */
 import { cn } from "@/lib/utils";
 
 type SectionProps = {
@@ -6,6 +11,7 @@ type SectionProps = {
   className?: string;
 };
 
+/** A single full-height page section with centered content. */
 export function Section({ id, children, className }: SectionProps) {
   return (
     <section

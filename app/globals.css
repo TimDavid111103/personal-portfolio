@@ -1,9 +1,15 @@
+/**
+ * @file app/globals.css
+ * Global styles: theme tokens, grid background, spotlight overlay,
+ * and doodle animation keyframes.
+ */
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
+/* Light mode color palette and design tokens. */
 :root {
   --background: oklch(0.9761 0.0041 91.4461);
   --foreground: oklch(0.2417 0.0298 269.8827);
@@ -62,6 +68,7 @@
   --spotlight-opacity: 0;
 }
 
+/* Dark mode overrides for the same tokens. */
 .dark {
   --background: oklch(0.1448 0 0);
   --foreground: oklch(0.9702 0 0);
@@ -115,6 +122,7 @@
   --shadow-2xl: 0px 1px 2px 0px hsl(0 0% 0% / 0.10);
 }
 
+/* Maps CSS variables to Tailwind theme and defines doodle float animation. */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -188,6 +196,7 @@
   }
 }
 
+/* Hides scrollbars on the main scroll area. */
 @utility scrollbar-none {
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -197,6 +206,7 @@
   }
 }
 
+/* Base element styles, grid background, spotlight, and doodle animations. */
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -226,6 +236,7 @@
     background-attachment: fixed;
   }
 
+  /* Mouse-following primary-colored grid highlight (driven by GridSpotlight). */
   body::after {
     content: "";
     position: fixed;
@@ -269,6 +280,7 @@
     );
   }
 
+  /* Doodle float, flow, pipeline, and gear spin animations. */
   @media (prefers-reduced-motion: no-preference) {
     .doodle-float {
       animation: doodle-float 9s ease-in-out infinite;

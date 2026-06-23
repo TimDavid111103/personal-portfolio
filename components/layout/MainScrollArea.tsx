@@ -1,16 +1,23 @@
+/**
+ * @file components/layout/MainScrollArea.tsx
+ * The page's scrollable main region. Registers itself for hash-based
+ * section navigation and restores scroll position on load/hash change.
+ */
 "use client";
 
 import { useCallback, useEffect, type ReactNode } from "react";
 import {
   registerMainScrollElement,
   scrollToSectionHash,
-} from "@/lib/section-scroll";
+} from "./section-scroll";
 
 type MainScrollAreaProps = {
   children: ReactNode;
 };
 
+/** Scrollable main wrapper that owns in-page section navigation. */
 export function MainScrollArea({ children }: MainScrollAreaProps) {
+  /** Registers this element as the scroll container and jumps to hash on mount. */
   const setMainRef = useCallback((node: HTMLElement | null) => {
     registerMainScrollElement(node);
 
@@ -19,6 +26,7 @@ export function MainScrollArea({ children }: MainScrollAreaProps) {
     }
   }, []);
 
+  /** Re-scrolls when the URL hash changes; unregisters on unmount. */
   useEffect(() => {
     const scrollFromHash = () => {
       if (location.hash) {

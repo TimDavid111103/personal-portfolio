@@ -1,3 +1,7 @@
+/**
+ * @file postcss.config.mjs
+ * PostCSS config for Tailwind CSS v4 processing.
+ */
 const config = {
   plugins: {
     "@tailwindcss/postcss": {},

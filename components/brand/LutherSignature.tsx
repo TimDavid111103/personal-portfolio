@@ -1,3 +1,7 @@
+/**
+ * @file components/brand/LutherSignature.tsx
+ * Script-font "Luther" wordmark used in the navbar and mobile menu.
+ */
 import { Pinyon_Script } from "next/font/google";
 import { cn } from "@/lib/utils";
 
@@ -9,6 +13,7 @@ const lutherScript = Pinyon_Script({
 
 type LutherSignatureProps = React.HTMLAttributes<HTMLSpanElement>;
 
+/** Renders the "Luther" signature logo in Pinyon Script. */
 export function LutherSignature({
   className,
   "aria-hidden": ariaHidden,

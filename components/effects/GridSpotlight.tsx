@@ -1,7 +1,14 @@
+/**
+ * @file components/effects/GridSpotlight.tsx
+ * Mouse-following grid highlight on desktop. Updates CSS variables that
+ * drive the spotlight overlay in globals.css. Disabled on touch and
+ * when the user prefers reduced motion.
+ */
 "use client";
 
 import { useEffect } from "react";
 
+/** Returns true when spotlight effects are appropriate for this device. */
 function canUseGridSpotlight() {
   return (
     window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
@@ -9,6 +16,7 @@ function canUseGridSpotlight() {
   );
 }
 
+/** Tracks pointer position and toggles the grid spotlight overlay. */
 export function GridSpotlight() {
   useEffect(() => {
     const root = document.documentElement;
@@ -20,6 +28,7 @@ export function GridSpotlight() {
     let x = 0;
     let y = 0;
 
+    /** Writes spotlight position and visibility to CSS custom properties. */
     const paint = () => {
       frame = 0;
       root.style.setProperty("--spotlight-x", `${x}px`);
@@ -27,12 +36,14 @@ export function GridSpotlight() {
       root.style.setProperty("--spotlight-opacity", "1");
     };
 
+    /** Batches position updates to one frame per pointer move. */
     const schedulePaint = () => {
       if (!frame) {
         frame = requestAnimationFrame(paint);
       }
     };
 
+    /** Updates spotlight position from mouse movement. */
     const onMove = (event: PointerEvent) => {
       if (event.pointerType !== "mouse") return;
       x = event.clientX;
@@ -40,11 +51,13 @@ export function GridSpotlight() {
       schedulePaint();
     };
 
+    /** Hides spotlight when the pointer leaves the document. */
     const onLeave = (event: MouseEvent) => {
       if (event.relatedTarget !== null) return;
       root.style.setProperty("--spotlight-opacity", "0");
     };
 
+    /** Attaches pointer listeners and shows the spotlight. */
     const enable = () => {
       if (active) return;
       active = true;
@@ -52,6 +65,7 @@ export function GridSpotlight() {
       document.addEventListener("mouseout", onLeave);
     };
 
+    /** Removes listeners and hides the spotlight. */
     const disable = () => {
       if (!active) return;
       active = false;
@@ -62,6 +76,7 @@ export function GridSpotlight() {
       document.removeEventListener("mouseout", onLeave);
     };
 
+    /** Enables or disables based on device capabilities and motion preference. */
     const sync = () => {
       if (canUseGridSpotlight()) {
         enable();

@@ -1,3 +1,8 @@
+/**
+ * @file app/layout.tsx
+ * Root HTML shell: fonts, page metadata, and global background effects.
+ * Wraps every page with doodles, grid spotlight, and the main content area.
+ */
 import type { Metadata } from "next";
 import {
   IBM_Plex_Mono,
@@ -9,17 +14,20 @@ import { GridSpotlight } from "@/components/effects/GridSpotlight";
 import { getSite } from "@/lib/site";
 import "./globals.css";
 
+/** Body and heading font (Libre Baskerville). */
 const libreBaskerville = Libre_Baskerville({
   variable: "--font-sans",
   subsets: ["latin"],
   weight: ["400", "700"],
 });
 
+/** Accent serif font (Lora). */
 const lora = Lora({
   variable: "--font-serif",
   subsets: ["latin"],
 });
 
+/** Monospace font for skill tags and code-like UI. */
 const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
@@ -28,11 +36,13 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 const site = getSite();
 
+/** Browser tab title and meta description from site.json. */
 export const metadata: Metadata = {
   title: `${site.name} | ${site.role}`,
   description: site.bio,
 };
 
+/** App-wide layout: fonts, background layers, and page children. */
 export default function RootLayout({
   children,
 }: Readonly<{

@@ -1,9 +1,16 @@
+/**
+ * @file components/effects/HeroPipelineDoodle.tsx
+ * Wide SVG pipeline diagram behind the hero avatar. Shows a Gmail-to-Slack
+ * automation flow with trigger, queue, transform, condition, agent, RAG,
+ * LLM, and output steps connected by pipes and arrows.
+ */
 import { cn } from "@/lib/utils";
 
 type HeroPipelineDoodleProps = {
   className?: string;
 };
 
+/** SVG coordinate constants for the pipeline rail and tunnel gap. */
 const RAIL_Y = 80;
 const PIPE_TOP = 72;
 const PIPE_H = 16;
@@ -13,18 +20,22 @@ const STEP_H = 46;
 const VIEW_H = 178;
 const ANCHOR_GAP = 26;
 
+/** Horizontal center of a pipeline step box. */
 function stepCenter(step: { x: number; w: number }) {
   return step.x + step.w / 2;
 }
 
+/** Top edge Y of pipeline step boxes. */
 function stepTop() {
   return RAIL_Y - STEP_H / 2;
 }
 
+/** Bottom edge Y of pipeline step boxes. */
 function stepBottom() {
   return RAIL_Y + STEP_H / 2;
 }
 
+/** Visual style key for each pipeline step type. */
 type StepVariant =
   | "trigger"
   | "queue"
@@ -35,6 +46,7 @@ type StepVariant =
   | "llm"
   | "output";
 
+/** Arrow tip for pipeline connectors and curved paths. */
 function ArrowHead({
   x,
   y,
@@ -58,6 +70,7 @@ function ArrowHead({
   return <path d={`M${x - size} ${y - size * 0.7} L${x} ${y} L${x - size} ${y + size * 0.7}`} />;
 }
 
+/** Rounded pipe segment between pipeline steps (solid or dashed for tunnel). */
 function PipeSegment({
   x,
   width,
@@ -98,6 +111,7 @@ function PipeSegment({
   );
 }
 
+/** Connection port circle on the left or right edge of a step. */
 function StepPort({ x, r = 3 }: { x: number; r?: number }) {
   return (
     <circle
@@ -111,6 +125,7 @@ function StepPort({ x, r = 3 }: { x: number; r?: number }) {
   );
 }
 
+/** Small status bar above each pipeline step with tick marks. */
 function StepBadge({
   x,
   y,
@@ -145,6 +160,7 @@ function StepBadge({
   );
 }
 
+/** A single pipeline step box with variant-specific decoration and icon slot. */
 function PipelineStep({
   x,
   w,
@@ -320,6 +336,7 @@ function PipelineStep({
   );
 }
 
+/** Icon for the trigger/event step. */
 function TriggerIcon() {
   return (
     <g strokeWidth="1.3">
@@ -330,6 +347,7 @@ function TriggerIcon() {
   );
 }
 
+/** Icon for the queue/buffer step. */
 function QueueIcon() {
   return (
     <g strokeWidth="1.15">
@@ -342,6 +360,7 @@ function QueueIcon() {
   );
 }
 
+/** Icon for the data transform step. */
 function TransformIcon() {
   return (
     <g strokeWidth="1.2">
@@ -353,6 +372,7 @@ function TransformIcon() {
   );
 }
 
+/** Icon for the conditional branch step. */
 function ConditionIcon() {
   return (
     <g strokeWidth="1.25">
@@ -365,6 +385,7 @@ function ConditionIcon() {
   );
 }
 
+/** Icon for the multi-agent step. */
 function AgentIcon() {
   return (
     <g strokeWidth="1.1">
@@ -378,6 +399,7 @@ function AgentIcon() {
   );
 }
 
+/** Icon for the RAG retrieval step. */
 function RagIcon() {
   return (
     <g strokeWidth="1.1">
@@ -397,6 +419,7 @@ function RagIcon() {
   );
 }
 
+/** Icon for the LLM inference step. */
 function LlmIcon() {
   return (
     <g strokeWidth="1.1">
@@ -410,6 +433,7 @@ function LlmIcon() {
   );
 }
 
+/** Icon for the final output/delivery step. */
 function OutputIcon() {
   return (
     <g strokeWidth="1.3">
@@ -421,6 +445,7 @@ function OutputIcon() {
   );
 }
 
+/** Curved path with an arrowhead at the end. */
 function CurvedArrow({
   d,
   endX,
@@ -440,6 +465,7 @@ function CurvedArrow({
   );
 }
 
+/** Straight horizontal connector between two step X positions. */
 function Connector({ x1, x2, label }: { x1: number; x2: number; label?: "async" | "ok" }) {
   const mid = (x1 + x2) / 2;
   return (
@@ -460,6 +486,7 @@ function Connector({ x1, x2, label }: { x1: number; x2: number; label?: "async" 
   );
 }
 
+/** Gmail envelope source node above the pipeline. */
 function GmailSource({ x, y }: { x: number; y: number }) {
   return (
     <g transform={`translate(${x}, ${y})`}>
@@ -487,6 +514,7 @@ function GmailSource({ x, y }: { x: number; y: number }) {
   );
 }
 
+/** Slack destination node below the pipeline. */
 function SlackSink({ x, y }: { x: number; y: number }) {
   return (
     <g transform={`translate(${x}, ${y})`}>
@@ -508,6 +536,7 @@ function SlackSink({ x, y }: { x: number; y: number }) {
   );
 }
 
+/** Full hero pipeline SVG with steps, pipes, Gmail/Slack anchors, and animated dots. */
 export function HeroPipelineDoodle({ className }: HeroPipelineDoodleProps) {
   const steps = {
     trigger: { x: 48, w: 52 },

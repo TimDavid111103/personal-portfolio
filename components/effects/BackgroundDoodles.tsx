@@ -1,3 +1,8 @@
+/**
+ * @file components/effects/BackgroundDoodles.tsx
+ * Fixed decorative SVG doodles scattered across the page background.
+ * Each doodle illustrates an AI/engineering concept (agents, RAG, pipelines, etc.).
+ */
 import { cn } from "@/lib/utils";
 
 type DoodleProps = {
@@ -6,6 +11,7 @@ type DoodleProps = {
   children: React.ReactNode;
 };
 
+/** Wrapper SVG with shared stroke styling for all background doodles. */
 function Doodle({ className, viewBox, children }: DoodleProps) {
   return (
     <svg
@@ -26,6 +32,7 @@ function Doodle({ className, viewBox, children }: DoodleProps) {
   );
 }
 
+/** Small filled circle used as nodes, packets, or embedding dots. */
 function Dot({
   cx,
   cy,
@@ -49,6 +56,7 @@ function Dot({
   );
 }
 
+/** Directional arrow tip for flow and connection lines. */
 function ArrowHead({
   x,
   y,
@@ -70,6 +78,7 @@ function ArrowHead({
   return <path d={paths[direction]} />;
 }
 
+/** Circular agent node with horizontal detail lines inside. */
 function AgentNode({
   cx,
   cy,
@@ -92,6 +101,7 @@ function AgentNode({
   );
 }
 
+/** Gear shape with alternating inner/outer teeth for the optimization doodle. */
 function GearTeeth({ cx, cy, r, teeth }: { cx: number; cy: number; r: number; teeth: number }) {
   const inner = r * 0.72;
   const outer = r;
@@ -113,6 +123,7 @@ function GearTeeth({ cx, cy, r, teeth }: { cx: number; cy: number; r: number; te
   );
 }
 
+/** Preset width/height classes for doodle SVGs. */
 const doodleSizes = {
   standard: "h-[7em] w-[8em]",
   square: "h-[6.75em] w-[6.75em]",
@@ -121,6 +132,7 @@ const doodleSizes = {
   wideLg: "h-[5.5em] w-[10em]",
 } as const;
 
+/** Screen position, rotation, and size for each of the ten background doodles. */
 const placements = [
   { position: "top-[7%] left-[4%] -rotate-6", size: doodleSizes.standard },
   { position: "top-[7%] right-[4%] rotate-4", size: doodleSizes.standard },
@@ -134,6 +146,7 @@ const placements = [
   { position: "top-[84%] right-[8%] rotate-3", size: doodleSizes.wideLg },
 ] as const;
 
+/** Renders all floating background doodles in a fixed full-screen layer. */
 export function BackgroundDoodles() {
   return (
     <div

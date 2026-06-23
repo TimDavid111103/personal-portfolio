@@ -1,3 +1,8 @@
+/**
+ * @file components/layout/Navbar.tsx
+ * Sticky top navigation: logo, section links, theme toggle, and mobile menu.
+ * Nav items and CTA label come from site.json.
+ */
 "use client";
 
 import { useEffect, useState } from "react";
@@ -18,9 +23,11 @@ import {
 
 const site = getSite();
 
+/** Site header with desktop nav, theme toggle, and mobile sheet menu. */
 export function Navbar() {
   const [isDark, setIsDark] = useState(false);
 
+  /** Restores theme from localStorage or system preference on mount. */
   useEffect(() => {
     const root = document.documentElement;
     const stored = localStorage.getItem("theme");
@@ -30,6 +37,7 @@ export function Navbar() {
     root.classList.toggle("dark", shouldBeDark);
   }, []);
 
+  /** Switches light/dark mode and persists the choice. */
   function toggleTheme() {
     const next = !isDark;
     setIsDark(next);
