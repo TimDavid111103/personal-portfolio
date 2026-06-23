@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
-  <rect width="800" height="450" fill="#F5F0E8"/>
-  <rect x="40" y="40" width="320" height="24" rx="4" fill="#C4A882"/>
-  <rect x="40" y="80" width="280" height="16" rx="4" fill="#D4C4A8"/>
-  <rect x="40" y="110" width="240" height="16" rx="4" fill="#D4C4A8"/>
-  <rect x="40" y="160" width="200" height="120" rx="8" fill="#9E7B5A" opacity="0.3"/>
-  <rect x="400" y="60" width="360" height="330" rx="12" fill="#E8DFD0" stroke="#C4A882" stroke-width="2"/>
-  <text x="400" y="240" font-family="serif" font-size="20" fill="#9E7B5A">Eval Harness</text>
-</svg>

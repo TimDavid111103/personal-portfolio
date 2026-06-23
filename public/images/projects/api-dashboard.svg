@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
-  <rect width="800" height="450" fill="#F5F0E8"/>
-  <rect x="40" y="40" width="320" height="24" rx="4" fill="#C4A882"/>
-  <rect x="400" y="60" width="360" height="330" rx="12" fill="#E8DFD0" stroke="#C4A882" stroke-width="2"/>
-  <polyline points="420,300 480,220 540,260 600,180 680,200" stroke="#9E7B5A" stroke-width="3" fill="none"/>
-  <text x="400" y="240" font-family="serif" font-size="20" fill="#9E7B5A">API Dashboard</text>
-</svg>

@@ -1,8 +1,18 @@
 {
-  "name": "Tim David",
-  "role": "Full-Stack Developer",
-  "bio": "I build thoughtful web applications with modern tools — from polished interfaces to reliable backends. Passionate about clean architecture, developer experience, and shipping products that people actually use.",
+  "name": "Tim-Luther David",
+  "role": "AI Engineer",
+  "bio": "I design and build AI workflows and pipelines, specializing in multi-agent systems, RAG, and automations. Focused on turning complex problems into reliable, production-ready solutions.",
   "avatar": "/images/avatar.png",
+  "skills": [
+    "Multi-Agent Systems",
+    "Context-Aware AI Systems",
+    "LLM Integration & Prompting",
+    "Agent Evaluation & Observability",
+    "Pipelines & Workflow Automation",
+    "Internal Tools & MCP Integrations",
+    "Full-Stack Development",
+    "Product Development"
+  ],
   "nav": {
     "links": [
       { "label": "Projects", "href": "#projects" },
@@ -61,6 +71,6 @@
     "email": "hello@example.com"
   },
   "footer": {
-    "copyright": "© 2026 Tim David. All rights reserved."
+    "copyright": "© 2026 Tim-Luther David. All rights reserved."
   }
 }

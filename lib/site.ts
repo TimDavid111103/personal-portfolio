@@ -17,6 +17,7 @@ export type SiteData = {
   role: string;
   bio: string;
   avatar: string;
+  skills: string[];
   nav: {
     links: NavLink[];
     cta: NavLink;
