@@ -1,7 +1,9 @@
 /**
  * @file app/layout.tsx
  * Root HTML shell: fonts, page metadata, and global background effects.
- * Wraps every page with doodles, grid spotlight, and the main content area.
+ *
+ * The body uses `h-dvh overflow-hidden` so the app never grows beyond one device
+ * viewport. All vertical scrolling happens inside MainScrollArea (see page.tsx).
  */
 import type { Metadata } from "next";
 import {
@@ -53,6 +55,11 @@ export default function RootLayout({
       lang="en"
       className={`${libreBaskerville.variable} ${lora.variable} ${ibmPlexMono.variable} h-full`}
     >
+      {/*
+        flex h-dvh flex-col — locks the shell to one viewport.
+        overflow-hidden — prevents document-level scroll; sections scroll inside MainScrollArea.
+        The inner flex-1 wrapper passes remaining height to Navbar + page content.
+      */}
       <body className="flex h-dvh flex-col overflow-hidden">
         <BackgroundDoodles />
         <GridSpotlight />

@@ -1,7 +1,10 @@
 /**
  * @file components/layout/Navbar.tsx
  * Sticky top navigation: logo, section links, theme toggle, and mobile menu.
- * Nav items and CTA label come from site.json.
+ *
+ * Sits above MainScrollArea and does not scroll. Its height (`h-16`) defines
+ * how much viewport is left for the one-screen section scroll pane. Nav links
+ * use SectionNavLink to scroll section titles into view (see section-scroll.ts).
  */
 "use client";
 
@@ -47,6 +50,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 shrink-0 border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
+      {/* shrink-0 + h-16: fixed height so MainScrollArea gets the rest of the viewport */}
       <nav className="relative mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <SectionNavLink
           href="#home"

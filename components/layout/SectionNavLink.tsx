@@ -1,7 +1,10 @@
 /**
  * @file components/layout/SectionNavLink.tsx
- * In-page anchor link that scrolls sections via section-scroll instead of
- * the browser's default jump. Updates the URL hash without a full navigation.
+ * In-page anchor that scrolls via section-scroll.ts instead of native jump.
+ *
+ * Each `href` (e.g. `#projects`) must match the `id` on that section's title
+ * element. On click we update the URL hash and scroll the title to the screen
+ * center (navbar-aware — see section-scroll.ts).
  */
 "use client";
 
@@ -11,7 +14,6 @@ import { cn } from "@/lib/utils";
 
 type SectionNavLinkProps = ComponentProps<"a">;
 
-/** Hash link that smoothly scrolls to a section in the main scroll area. */
 export function SectionNavLink({
   href,
   className,

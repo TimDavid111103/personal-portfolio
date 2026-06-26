@@ -66,6 +66,12 @@
   --spotlight-x: 50%;
   --spotlight-y: 50%;
   --spotlight-opacity: 0;
+
+  /*
+   * Layout: used by section-scroll.ts to find the visual center of the screen.
+   * Must match Navbar nav h-16 (4rem). If navbar height changes, update both.
+   */
+  --navbar-height: 4rem;
 }
 
 /* Dark mode overrides for the same tokens. */
