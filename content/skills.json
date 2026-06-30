@@ -1,42 +1,86 @@
 {
   "heading": "Skills & Expertise",
-  "subtitle": "Technologies I work with",
-  "categories": [
+  "subtitle": "Tools I ship with and the capabilities behind them.",
+  "technical": [
+    { "name": "Python", "icon": "python", "category": "Languages" },
+    { "name": "TypeScript", "icon": "typescript", "category": "Languages" },
+    { "name": "Anthropic", "icon": "anthropic", "category": "AI & LLMs" },
+    { "name": "Claude", "icon": "claude", "category": "AI & LLMs" },
+    { "name": "OpenAI", "icon": "openai", "category": "AI & LLMs" },
+    { "name": "Gemini", "icon": "gemini", "category": "AI & LLMs" },
+    { "name": "Langfuse", "icon": "langfuse", "category": "AI & LLMs" },
+    { "name": "PostgreSQL", "icon": "postgresql", "category": "Backend & Data" },
+    { "name": "SQLAlchemy", "icon": "sqlalchemy", "category": "Backend & Data" },
+    { "name": "Pydantic", "icon": "pydanticai", "category": "Backend & Data" },
+    { "name": "Pytest", "icon": "pytest", "category": "Backend & Data" },
+    { "name": "PyPI", "icon": "pypi", "category": "Backend & Data" },
+    { "name": "React", "icon": "react", "category": "Frontend" },
+    { "name": "Next.js", "icon": "nextjs", "category": "Frontend" },
+    { "name": "Tailwind CSS", "icon": "tailwindcss", "category": "Frontend" },
+    { "name": "shadcn/ui", "icon": "shadcnui", "category": "Frontend" },
+    { "name": "React Native", "icon": "reactnative", "category": "Mobile" },
+    { "name": "Expo", "icon": "expo", "category": "Mobile" },
+    { "name": "React Navigation", "icon": "reactnavigation", "category": "Mobile" },
+    { "name": "Docker", "icon": "docker", "category": "Infra & Deploy" },
+    { "name": "Render", "icon": "render", "category": "Infra & Deploy" },
+    { "name": "Vercel", "icon": "vercel", "category": "Infra & Deploy" },
+    { "name": "Firebase", "icon": "firebase", "category": "Infra & Deploy" },
+    { "name": "Supabase", "icon": "supabase", "category": "Infra & Deploy" },
+    { "name": "Stripe", "icon": "stripe", "category": "Infra & Deploy" },
+    { "name": "Git", "icon": "git", "category": "Tooling" },
+    { "name": "GitHub", "icon": "github", "category": "Tooling" },
+    { "name": "Cursor", "icon": "cursor", "category": "Tooling" },
+    { "name": "Notion", "icon": "notion", "category": "Tooling" },
+    { "name": "Figma", "icon": "figma", "category": "Tooling" },
+    { "name": "Tauri", "icon": "tauri", "category": "Tooling" },
+    { "name": "Markdown", "icon": "markdown", "category": "Tooling" },
+    { "name": "Pandas", "icon": "pandas", "category": "Data Science" },
+    { "name": "NumPy", "icon": "numpy", "category": "Data Science" },
+    { "name": "scikit-learn", "icon": "scikitlearn", "category": "Data Science" }
+  ],
+  "toolsWithoutIcons": [
+    { "name": "FastAPI", "category": "Backend & Data" },
+    { "name": "Alembic", "category": "Backend & Data" },
+    { "name": "Docling", "category": "Backend & Data" },
+    { "name": "MCP", "category": "Tooling" },
+    { "name": "pgvector", "category": "Backend & Data" }
+  ],
+  "general": [
     {
-      "name": "Web Development",
-      "skills": [
-        { "name": "React / Next.js", "level": 90 },
-        { "name": "TypeScript", "level": 85 },
-        { "name": "Tailwind CSS", "level": 88 },
-        { "name": "HTML / CSS", "level": 92 }
-      ]
+      "title": "0 to 1 Product Builder",
+      "description": "Take a project from problem definition through architecture, build, deployment, and iteration."
     },
     {
-      "name": "Backend & APIs",
-      "skills": [
-        { "name": "Node.js", "level": 80 },
-        { "name": "Python", "level": 75 },
-        { "name": "PostgreSQL", "level": 78 },
-        { "name": "REST / GraphQL", "level": 82 }
-      ]
+      "title": "Evaluation-Driven Developer",
+      "description": "Build eval and feedback infrastructure around a system rather than doing evals ad hoc."
     },
     {
-      "name": "Tools & DevOps",
-      "skills": [
-        { "name": "Git / GitHub", "level": 90 },
-        { "name": "Docker", "level": 70 },
-        { "name": "CI/CD", "level": 75 },
-        { "name": "Vercel / AWS", "level": 72 }
-      ]
+      "title": "Multi-Agent Pipeline Design",
+      "description": "Decompose tasks into staged agents and orchestrate models as components in a larger system."
     },
     {
-      "name": "AI & Data",
-      "skills": [
-        { "name": "Langfuse", "level": 80 },
-        { "name": "LLM Integrations", "level": 78 },
-        { "name": "MCP Servers", "level": 85 },
-        { "name": "Data Pipelines", "level": 70 }
-      ]
+      "title": "RAG Architecture",
+      "description": "Full pipeline from ingestion and chunking to grounded, source-cited retrieval."
+    },
+    {
+      "title": "Systems Thinking",
+      "description": "Top-down problem definition, data flow diagrams before code, deliberate scoping to avoid over-engineering."
+    },
+    {
+      "title": "Business & Product Thinking",
+      "description": "Market research, customer discovery, and pivoting on real signal."
+    },
+    {
+      "title": "Philosophy-Informed Problem Solving",
+      "description": "Interrogate the why before the how — strong pattern recognition across abstraction levels."
+    },
+    {
+      "title": "Communication & Leadership",
+      "description": "Ran a startup team, bridged technical and non-technical audiences, persuasive under pressure."
+    },
+    {
+      "title": "Resilient System Design",
+      "description": "Favor stability and proven methods over flashiness in production."
     }
   ]
 }

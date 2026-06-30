@@ -28,39 +28,21 @@
     "links": [
       {
         "platform": "LinkedIn",
-        "handle": "tim-david",
-        "url": "https://linkedin.com",
+        "handle": "tldavid",
+        "url": "https://www.linkedin.com/in/tldavid/?skipRedirect=true",
         "icon": "linkedin"
       },
       {
         "platform": "GitHub",
-        "handle": "@timdavid",
-        "url": "https://github.com",
+        "handle": "TimDavid111103",
+        "url": "https://github.com/TimDavid111103",
         "icon": "github"
       },
       {
-        "platform": "Twitter",
-        "handle": "@timdavid",
-        "url": "https://twitter.com",
+        "platform": "X",
+        "handle": "tim_lutherdavid",
+        "url": "https://x.com/tim_lutherdavid",
         "icon": "twitter"
-      },
-      {
-        "platform": "Email",
-        "handle": "hello@example.com",
-        "url": "mailto:hello@example.com",
-        "icon": "mail"
-      },
-      {
-        "platform": "Dev.to",
-        "handle": "@timdavid",
-        "url": "https://dev.to",
-        "icon": "devto"
-      },
-      {
-        "platform": "Medium",
-        "handle": "@timdavid",
-        "url": "https://medium.com",
-        "icon": "medium"
       }
     ]
   },

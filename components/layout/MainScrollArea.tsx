@@ -2,12 +2,8 @@
  * @file components/layout/MainScrollArea.tsx
  * The scrollable region below the navbar.
  *
- * This element is the **scroll pane**: it fills whatever viewport height remains
- * after the navbar (`flex-1 h-0` in a flex column). The user always sees exactly
- * one screen of content at a time; scrolling reveals the next Section below.
- *
- * Registers itself with section-scroll.ts so hash navigation can programmatically
- * scroll to section titles.
+ * Fills remaining viewport height (`flex-1 h-0`) and stacks one-screen Section
+ * children vertically. Registers with section-scroll.ts for hash navigation.
  */
 "use client";
 
@@ -23,7 +19,6 @@ type MainScrollAreaProps = {
 
 /** Scrollable main wrapper that owns in-page section navigation. */
 export function MainScrollArea({ children }: MainScrollAreaProps) {
-  /** Registers this element as the scroll container and jumps to hash on mount. */
   const setMainRef = useCallback((node: HTMLElement | null) => {
     registerMainScrollElement(node);
 
@@ -32,7 +27,6 @@ export function MainScrollArea({ children }: MainScrollAreaProps) {
     }
   }, []);
 
-  /** Re-scrolls when the URL hash changes; unregisters on unmount. */
   useEffect(() => {
     const scrollFromHash = () => {
       if (location.hash) {
@@ -49,10 +43,8 @@ export function MainScrollArea({ children }: MainScrollAreaProps) {
 
   return (
     <main
+      id="main-scroll"
       ref={setMainRef}
-      // flex-1 h-0 min-h-0 — fill remaining viewport below Navbar (the scroll pane).
-      // flex-col — Section children stack vertically, each one screen tall.
-      // overflow-y-auto — scroll happens here, not on the document body.
       className="scrollbar-none flex h-0 min-h-0 flex-1 flex-col overflow-y-auto overscroll-y-contain scroll-smooth"
     >
       {children}

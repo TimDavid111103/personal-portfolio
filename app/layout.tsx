@@ -6,6 +6,8 @@
  * viewport. All vertical scrolling happens inside MainScrollArea (see page.tsx).
  */
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import Script from "next/script";
 import {
   IBM_Plex_Mono,
   Libre_Baskerville,
@@ -13,7 +15,8 @@ import {
 } from "next/font/google";
 import { BackgroundDoodles } from "@/components/effects/BackgroundDoodles";
 import { GridSpotlight } from "@/components/effects/GridSpotlight";
-import { getSite } from "@/lib/site";
+import { getSite } from "@/lib/content";
+import { themeInitScript } from "@/lib/theme";
 import "./globals.css";
 
 /** Body and heading font (Libre Baskerville). */
@@ -48,19 +51,18 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${libreBaskerville.variable} ${lora.variable} ${ibmPlexMono.variable} h-full`}
     >
-      {/*
-        flex h-dvh flex-col — locks the shell to one viewport.
-        overflow-hidden — prevents document-level scroll; sections scroll inside MainScrollArea.
-        The inner flex-1 wrapper passes remaining height to Navbar + page content.
-      */}
       <body className="flex h-dvh flex-col overflow-hidden">
+        <Script id="theme-init" strategy="beforeInteractive">
+          {themeInitScript}
+        </Script>
         <BackgroundDoodles />
         <GridSpotlight />
         <div className="relative z-[1] flex min-h-0 flex-1 flex-col">

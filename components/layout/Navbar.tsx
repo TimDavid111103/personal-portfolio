@@ -8,11 +8,18 @@
  */
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { Menu, Moon, Sun } from "lucide-react";
+import { MagnetHover } from "@/components/animations/MagnetHover";
 import { LutherSignature } from "@/components/brand/LutherSignature";
 import { SectionNavLink } from "@/components/layout/SectionNavLink";
-import { getSite } from "@/lib/site";
+import { getSite } from "@/lib/content";
+import {
+  getThemeServerSnapshot,
+  getThemeSnapshot,
+  subscribeToTheme,
+  toggleTheme,
+} from "@/lib/theme";
 import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
@@ -28,29 +35,14 @@ const site = getSite();
 
 /** Site header with desktop nav, theme toggle, and mobile sheet menu. */
 export function Navbar() {
-  const [isDark, setIsDark] = useState(false);
-
-  /** Restores theme from localStorage or system preference on mount. */
-  useEffect(() => {
-    const root = document.documentElement;
-    const stored = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const shouldBeDark = stored === "dark" || (!stored && prefersDark);
-    setIsDark(shouldBeDark);
-    root.classList.toggle("dark", shouldBeDark);
-  }, []);
-
-  /** Switches light/dark mode and persists the choice. */
-  function toggleTheme() {
-    const next = !isDark;
-    setIsDark(next);
-    document.documentElement.classList.toggle("dark", next);
-    localStorage.setItem("theme", next ? "dark" : "light");
-  }
+  const isDark = useSyncExternalStore(
+    subscribeToTheme,
+    getThemeSnapshot,
+    getThemeServerSnapshot
+  );
 
   return (
     <header className="sticky top-0 z-50 shrink-0 border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
-      {/* shrink-0 + h-16: fixed height so MainScrollArea gets the rest of the viewport */}
       <nav className="relative mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <SectionNavLink
           href="#home"
@@ -79,15 +71,19 @@ export function Navbar() {
             onClick={toggleTheme}
             aria-label="Toggle theme"
           >
-            {isDark ? <Sun className="size-4" /> : <Moon className="size-4" />}
+            <span suppressHydrationWarning>
+              {isDark ? <Sun className="size-4" /> : <Moon className="size-4" />}
+            </span>
           </Button>
 
-          <SectionNavLink
-            href={site.nav.cta.href}
-            className={cn(buttonVariants(), "hidden md:inline-flex")}
-          >
-            {site.nav.cta.label}
-          </SectionNavLink>
+          <MagnetHover magnetStrength={5} padding={50}>
+            <SectionNavLink
+              href={site.nav.cta.href}
+              className={cn(buttonVariants(), "hidden md:inline-flex")}
+            >
+              {site.nav.cta.label}
+            </SectionNavLink>
+          </MagnetHover>
 
           <Sheet>
             <SheetTrigger

@@ -10,10 +10,10 @@
 
 import type { ComponentProps } from "react";
 import { scrollToSectionHash } from "./section-scroll";
-import { cn } from "@/lib/utils";
 
 type SectionNavLinkProps = ComponentProps<"a">;
 
+/** Hash link that smoothly scrolls a section title into view. */
 export function SectionNavLink({
   href,
   className,
@@ -24,7 +24,7 @@ export function SectionNavLink({
   return (
     <a
       href={href}
-      className={cn(className)}
+      className={className}
       onClick={(event) => {
         onClick?.(event);
         if (event.defaultPrevented || !href?.startsWith("#")) return;

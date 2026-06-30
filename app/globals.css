@@ -286,6 +286,37 @@
     );
   }
 
+  #main-scroll section {
+    scroll-margin-top: calc(var(--navbar-height) + 2rem);
+  }
+
+  .split-parent,
+  .blur-text {
+    padding-block: 0.125rem;
+  }
+
+  /* Skills section — slow continuous marquee (no snap). */
+  .skills-marquee-track {
+    animation: skills-marquee var(--marquee-duration, 110s) linear infinite;
+  }
+
+  .skills-marquee-track-reverse {
+    animation-direction: reverse;
+  }
+
+  .skills-marquee-row:hover .skills-marquee-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes skills-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
   /* Doodle float, flow, pipeline, and gear spin animations. */
   @media (prefers-reduced-motion: no-preference) {
     .doodle-float {
@@ -467,6 +498,21 @@
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
+    }
+
+    .skills-marquee-track {
+      animation: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      max-width: 100%;
+      gap: 1rem;
+    }
+
+    .skills-marquee-row {
+      min-height: auto;
+      overflow: visible;
+      height: auto;
     }
   }
 }

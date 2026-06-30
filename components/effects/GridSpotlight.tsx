@@ -9,7 +9,7 @@
 import { useEffect } from "react";
 
 /** Returns true when spotlight effects are appropriate for this device. */
-function canUseGridSpotlight() {
+function canUseGridSpotlight(): boolean {
   return (
     window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
     !window.matchMedia("(prefers-reduced-motion: reduce)").matches

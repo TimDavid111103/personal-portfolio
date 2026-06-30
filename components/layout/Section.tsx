@@ -2,39 +2,28 @@
  * @file components/layout/Section.tsx
  * Wrapper for every full-screen page section (Hero, Projects, Skills, …).
  *
- * ## Why each section is one screen tall
- *
- * Sections are direct children of MainScrollArea, which is exactly one visible
- * screen below the navbar. We use `flex-[0_0_100%]` so each section's height
- * equals 100% of that scroll pane — not 100dvh (the full viewport). That way
- * every section matches the area the user actually sees, and N sections stack
- * to N screens of scroll distance.
- *
- * ## Content placement
- *
- * `place-items-center` puts children at the geometric center of the section.
- * Placeholder sections render a single title here; the Hero renders its own layout.
- * Navbar scroll targets are title elements with matching hash ids (see section-scroll.ts).
+ * Each section is exactly one scroll-pane tall (`flex-[0_0_100%]` of MainScrollArea).
+ * Navbar hash links target title elements inside sections — see section-scroll.ts.
  */
+import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 type SectionProps = {
-  id?: string;
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
+  /** Size to content; optional min height of one viewport below the navbar. */
+  fluid?: boolean;
 };
 
-/** One screen-sized block inside the scroll area. */
-export function Section({ id, children, className }: SectionProps) {
+/** Full-screen block, or fluid height when `fluid` is set. */
+export function Section({ children, className, fluid }: SectionProps) {
   return (
     <section
-      id={id}
       className={cn(
-        // flex-[0_0_100%] — flex-basis 100% of MainScrollArea: exactly one scroll-pane height.
-        // shrink-0 — do not compress when multiple sections are stacked.
-        // overflow-hidden — content must not spill into the next section.
-        // place-items-center — center children horizontally and vertically in the section.
-        "grid min-h-0 w-full shrink-0 flex-[0_0_100%] place-items-center overflow-hidden px-4 sm:px-6",
+        "grid min-h-0 w-full shrink-0 overflow-hidden px-4 sm:px-6",
+        fluid
+          ? "min-h-[calc(100dvh-var(--navbar-height))] flex-[0_0_auto] place-items-stretch"
+          : "flex-[0_0_100%] place-items-center",
         className
       )}
     >

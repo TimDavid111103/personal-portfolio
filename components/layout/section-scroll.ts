@@ -2,19 +2,8 @@
  * @file components/layout/section-scroll.ts
  * Programmatic scroll for in-page section navigation.
  *
- * ## How it fits the section layout
- *
- * - MainScrollArea is the scroll container (one screen below the navbar).
- * - Each Section is one screen tall inside that container.
- * - Navbar links point to section **titles** via hash ids (e.g. `#projects` →
- *   `<h2 id="projects">`).
- *
- * ## Scroll behavior
- *
- * We scroll the title to the **visual center of the screen**, not the center of
- * the scroll container alone. The visible "screen" includes the navbar at the
- * top, so the target Y is halfway between the navbar bottom and the viewport
- * bottom. `--navbar-height` in globals.css must match Navbar `h-16`.
+ * Scrolls section title elements to just below the navbar (top-aligned), so each
+ * section's heading is the first thing visible in the content area.
  */
 let mainScrollElement: HTMLElement | null = null;
 
@@ -28,25 +17,19 @@ function getNavbarHeight(): number {
   return document.querySelector("header")?.getBoundingClientRect().height ?? 64;
 }
 
-/**
- * Visual center Y of the content area: midpoint between navbar bottom and
- * viewport bottom. Used so scrolled titles appear centered on screen.
- */
-function getViewportContentCenterY(): number {
-  const navbarHeight = getNavbarHeight();
-  return navbarHeight + (window.innerHeight - navbarHeight) / 2;
-}
+/** Padding between navbar bottom and section title when scrolling. */
+const SECTION_SCROLL_PADDING = 32;
 
-/** Aligns the target element's vertical center with getViewportContentCenterY(). */
-function scrollElementToViewportCenter(
+/** Aligns the target element's top edge just below the navbar. */
+function scrollElementToSectionStart(
   container: HTMLElement,
   target: HTMLElement,
   behavior: ScrollBehavior = "smooth"
-) {
+): void {
+  const navbarHeight = getNavbarHeight();
   const targetRect = target.getBoundingClientRect();
-  const targetCenterY = targetRect.top + targetRect.height / 2;
-  const viewportCenterY = getViewportContentCenterY();
-  const delta = targetCenterY - viewportCenterY;
+  const desiredTop = navbarHeight + SECTION_SCROLL_PADDING;
+  const delta = targetRect.top - desiredTop;
 
   container.scrollTo({
     top: container.scrollTop + delta,
@@ -55,20 +38,23 @@ function scrollElementToViewportCenter(
 }
 
 /** Called by MainScrollArea on mount so hash links know which element to scroll. */
-export function registerMainScrollElement(element: HTMLElement | null) {
+export function registerMainScrollElement(element: HTMLElement | null): void {
   mainScrollElement = element;
 }
 
-/** Scrolls to a section title by hash (e.g. "#projects"). */
+/** Scrolls to a section by hash — aligns the section top below the navbar. */
 export function scrollToSectionHash(
   hash: string,
   behavior: ScrollBehavior = "smooth"
-) {
+): void {
   const id = hash.replace(/^#/, "");
   if (!id || !mainScrollElement) return;
 
   const target = document.getElementById(id);
   if (!target) return;
 
-  scrollElementToViewportCenter(mainScrollElement, target, behavior);
+  const section = target.closest("section");
+  const scrollTarget = (section ?? target) as HTMLElement;
+
+  scrollElementToSectionStart(mainScrollElement, scrollTarget, behavior);
 }

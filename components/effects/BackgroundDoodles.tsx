@@ -3,12 +3,14 @@
  * Fixed decorative SVG doodles scattered across the page background.
  * Each doodle illustrates an AI/engineering concept (agents, RAG, pipelines, etc.).
  */
+import type { ReactNode } from "react";
+import { ArrowHead, Dot } from "@/components/effects/doodle-svg";
 import { cn } from "@/lib/utils";
 
 type DoodleProps = {
   className?: string;
   viewBox: string;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 /** Wrapper SVG with shared stroke styling for all background doodles. */
@@ -32,52 +34,6 @@ function Doodle({ className, viewBox, children }: DoodleProps) {
   );
 }
 
-/** Small filled circle used as nodes, packets, or embedding dots. */
-function Dot({
-  cx,
-  cy,
-  r = 2.5,
-  className,
-}: {
-  cx: number;
-  cy: number;
-  r?: number;
-  className?: string;
-}) {
-  return (
-    <circle
-      cx={cx}
-      cy={cy}
-      r={r}
-      fill="currentColor"
-      stroke="none"
-      className={className}
-    />
-  );
-}
-
-/** Directional arrow tip for flow and connection lines. */
-function ArrowHead({
-  x,
-  y,
-  direction = "right",
-  size = 4,
-}: {
-  x: number;
-  y: number;
-  direction?: "right" | "down" | "left" | "up";
-  size?: number;
-}) {
-  const s = size;
-  const paths = {
-    right: `M${x - s} ${y - s * 0.7} L${x} ${y} L${x - s} ${y + s * 0.7}`,
-    down: `M${x - s * 0.7} ${y - s} L${x} ${y} L${x + s * 0.7} ${y - s}`,
-    left: `M${x + s} ${y - s * 0.7} L${x} ${y} L${x + s} ${y + s * 0.7}`,
-    up: `M${x - s * 0.7} ${y + s} L${x} ${y} L${x + s * 0.7} ${y + s}`,
-  };
-  return <path d={paths[direction]} />;
-}
-
 /** Circular agent node with horizontal detail lines inside. */
 function AgentNode({
   cx,
@@ -94,7 +50,7 @@ function AgentNode({
     <g>
       <circle cx={cx} cy={cy} r={r} fill="currentColor" fillOpacity="0.06" />
       <circle cx={cx} cy={cy} r={r} />
-      {lines.map(([x1, y1, x2, y2], i) => (
+      {lines.map(([x1, y1, x2], i) => (
         <path key={i} d={`M${x1} ${y1} H${x2}`} strokeWidth="1.1" />
       ))}
     </g>

@@ -5,6 +5,7 @@
  * LLM, and output steps connected by pipes and arrows.
  */
 import { cn } from "@/lib/utils";
+import { ArrowHead } from "@/components/effects/doodle-svg";
 
 type HeroPipelineDoodleProps = {
   className?: string;
@@ -45,30 +46,6 @@ type StepVariant =
   | "rag"
   | "llm"
   | "output";
-
-/** Arrow tip for pipeline connectors and curved paths. */
-function ArrowHead({
-  x,
-  y,
-  size = 4,
-  direction = "right",
-}: {
-  x: number;
-  y: number;
-  size?: number;
-  direction?: "right" | "down" | "up" | "left";
-}) {
-  if (direction === "down") {
-    return <path d={`M${x - size * 0.7} ${y - size} L${x} ${y} L${x + size * 0.7} ${y - size}`} />;
-  }
-  if (direction === "up") {
-    return <path d={`M${x - size * 0.7} ${y + size} L${x} ${y} L${x + size * 0.7} ${y + size}`} />;
-  }
-  if (direction === "left") {
-    return <path d={`M${x + size} ${y - size * 0.7} L${x} ${y} L${x + size} ${y + size * 0.7}`} />;
-  }
-  return <path d={`M${x - size} ${y - size * 0.7} L${x} ${y} L${x - size} ${y + size * 0.7}`} />;
-}
 
 /** Rounded pipe segment between pipeline steps (solid or dashed for tunnel). */
 function PipeSegment({

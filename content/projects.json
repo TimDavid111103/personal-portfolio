@@ -1,48 +1,113 @@
 {
   "heading": "Featured Projects",
-  "subtitle": "A showcase of my recent work",
+  "subtitle": "From multi-agent pipelines to evaluation tooling — problems I've taken from zero to production.",
   "projects": [
     {
-      "id": "evaluation-harness",
-      "title": "Evaluation Harness",
-      "description": "An internal tool that pulls Langfuse eval runs into Notion or Excel for human grading, streamlining the ML evaluation workflow for teams.",
+      "id": "scale66",
+      "title": "Scale66",
+      "role": "Co-founder & Backend Lead",
+      "featured": true,
+      "goal": "Help non-technical small business owners create platform-optimized social media content without marketing or design skills.",
       "highlights": [
-        "MCP server integration with Langfuse API",
-        "Automated export to Notion databases and Excel",
-        "Configurable grading templates"
+        "Pivoted from a no-code builder toward AI-generated social carousels after customer discovery across Michigan.",
+        "Built a 5-stage multi-agent pipeline: format selection → template matching → copywriting → image generation → style consistency.",
+        "Led a 4-person team with weekly meetings, GitHub Issues workflow, and eventually built the frontend myself.",
+        "Won $800 at Startup Garage pitch competition against 12 teams."
       ],
-      "tags": ["TypeScript", "MCP", "Langfuse", "Next.js"],
-      "image": "/images/projects/evaluation-harness.svg",
-      "liveUrl": "https://example.com",
-      "githubUrl": "https://github.com"
+      "layerStack": [
+        { "label": "Backend", "items": ["Python", "FastAPI", "SQLAlchemy", "PostgreSQL"] },
+        { "label": "AI", "items": ["Multi-agent pipeline", "Prompt engineering", "Generative image models"] },
+        { "label": "Frontend", "items": ["Next.js", "React", "Tailwind", "Figma to production"] },
+        { "label": "Infra", "items": ["Supabase auth", "Stripe", "Cloud storage", "Git/GitHub"] }
+      ],
+      "tags": ["Python", "FastAPI", "Next.js", "Multi-agent", "PostgreSQL"],
+      "githubUrl": "",
+      "liveUrl": "",
+      "doodle": "scale66"
     },
     {
-      "id": "portfolio",
-      "title": "Personal Portfolio",
-      "description": "A single-page portfolio built with Next.js and Shadcn UI, featuring JSON-driven content and a warm serif design system.",
+      "id": "evalsync",
+      "title": "EvalSync",
+      "role": "Internal Tooling",
+      "goal": "Pull LLM-judge eval results from Langfuse into Notion or Excel for human grading and judge-vs-human agreement tracking.",
       "highlights": [
-        "JSON-based content management",
-        "Responsive carousel project showcase",
-        "Custom OKLCH design tokens"
+        "Scoped aggressively with YAGNI — cut adapters, push mechanics, and kappa down to one focused MCP tool.",
+        "Single hard contract: every project emits one trace-level Langfuse score named judge_verdict.",
+        "Writes a 7-column table with match percent at the top — the harness reads, never runs evals.",
+        "Onboarding any new project costs almost nothing."
       ],
-      "tags": ["Next.js", "React", "Tailwind CSS", "Shadcn"],
-      "image": "/images/projects/portfolio.svg",
-      "liveUrl": "https://example.com",
-      "githubUrl": "https://github.com"
+      "layerStack": [
+        { "label": "Interface", "items": ["MCP server"] },
+        { "label": "Source", "items": ["Langfuse traces and scores"] },
+        { "label": "Targets", "items": ["Notion", "Excel"] }
+      ],
+      "tags": ["MCP", "Langfuse", "TypeScript", "Notion"],
+      "githubUrl": "",
+      "liveUrl": "",
+      "doodle": "evalsync"
     },
     {
-      "id": "api-dashboard",
-      "title": "API Analytics Dashboard",
-      "description": "A real-time dashboard for monitoring API usage, latency, and error rates with interactive charts and alerting.",
+      "id": "ai-news-digest",
+      "title": "AI News Digest",
+      "goal": "A daily digest of AI news filtered to what's actually relevant to my work — stay current without the noise.",
       "highlights": [
-        "Real-time WebSocket data streaming",
-        "Custom chart components with Recharts",
-        "Role-based access control"
+        "Built in under two days, still in daily use — a see-a-problem, build-it-myself moment.",
+        "Chose battle-tested scraping and delivery over flashy methods to avoid production failures.",
+        "Multi-agent pipeline: scraping → summarization → ranking → email delivery.",
+        "Async ingestion so the pipeline never blocks."
       ],
-      "tags": ["React", "Node.js", "PostgreSQL", "Redis"],
-      "image": "/images/projects/api-dashboard.svg",
-      "liveUrl": "https://example.com",
-      "githubUrl": "https://github.com"
+      "layerStack": [
+        { "label": "Backend", "items": ["Python", "FastAPI background tasks"] },
+        { "label": "Sources", "items": ["RSS feeds", "YouTube Transcript API", "feedparser"] },
+        { "label": "Processing", "items": ["Docling article extraction"] },
+        { "label": "Delivery", "items": ["Gmail SMTP", "Styled HTML emails"] }
+      ],
+      "tags": ["Python", "FastAPI", "RSS", "Multi-agent"],
+      "githubUrl": "",
+      "liveUrl": "",
+      "doodle": "ai-news"
+    },
+    {
+      "id": "ultra-deep24",
+      "title": "Ultra Deep24",
+      "role": "Job Application Project",
+      "status": "In planning",
+      "goal": "An onboarding voice agent for the Ultra student platform that gathers student info, guides next steps, and improves opportunity matching.",
+      "highlights": [
+        "Ultra ran four separate pipelines for college, internships, research, and entrepreneurship — never holistic.",
+        "The onboarding bot unifies intake and recommends which area to pursue first.",
+        "Designed to show value first, then communicate it clearly to the founder.",
+        "Project plan and documentation structured in Notion."
+      ],
+      "layerStack": [
+        { "label": "Interface", "items": ["Voice agent onboarding"] },
+        { "label": "Logic", "items": ["Unified student profile", "Opportunity routing"] }
+      ],
+      "tags": ["Voice AI", "Product design", "Notion"],
+      "githubUrl": "",
+      "liveUrl": "",
+      "doodle": "ultra-deep24"
+    },
+    {
+      "id": "docent-ai",
+      "title": "Docent AI",
+      "role": "RAG Application",
+      "goal": "Let users describe a real-life situation, identify which capital vices sit at the root, and give advice drawn from Rebecca DeYoung's Glittering Vices.",
+      "highlights": [
+        "Diagnoses deeper source vices, not single acts — grounded in DeYoung's framework.",
+        "End-to-end RAG: 512-token chunks, 64-token overlap, OpenAI embeddings, pgvector cosine retrieval.",
+        "Source-cited streaming answers over SSE with a frontend polling state machine.",
+        "Companion app: A Virtue a Day (React Native + Expo for iOS/Android)."
+      ],
+      "layerStack": [
+        { "label": "Backend", "items": ["Python", "FastAPI", "Async document processing"] },
+        { "label": "RAG", "items": ["OpenAI embeddings", "PostgreSQL + pgvector", "SSE streaming"] },
+        { "label": "Frontend", "items": ["Next.js", "React", "Tailwind"] }
+      ],
+      "tags": ["RAG", "pgvector", "FastAPI", "Next.js"],
+      "githubUrl": "",
+      "liveUrl": "",
+      "doodle": "docent-ai"
     }
   ]
 }
